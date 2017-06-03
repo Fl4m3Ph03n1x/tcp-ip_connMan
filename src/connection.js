@@ -1,17 +1,24 @@
 "use strict";
 
-const net = require( "net" );
+const net = require("net");
 
-const connection = {
-    socket: undefined,
-    connectFn: function(theOpts) {
+const connection = () => {
+
+    let socket, retriesCnt;
+
+    let connectFn = function(theOpts) {
         return new Promise((resolve, reject) => {
-            const socket = net.createConnection(theOpts, () => resolve(socket));
+            socket = net.createConnection(theOpts, () => resolve(socket));
             socket.once("error", err => reject(err));
         });
-    },
-    options: undefined,
-    retriesCnt: 0
+    };
+    
+    const getRetriesCnt = () => retriesCnt;  
+    
+    return {
+        getRetriesCnt,
+        connectFn
+    };
 };
 
 module.exports = connection;

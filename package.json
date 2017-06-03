@@ -1,0 +1,40 @@
+{
+  "name": "tcp-ip_connection_manager",
+  "version": "1.0.0",
+  "description": "Connection manager for tcp/ip connections",
+  "main": "./src/connectionManager.js",
+  "directories": {
+    "docs": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test":"NODE_ENV=test nyc mocha --reporter spec test/*_spec.js || true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan.git"
+  },
+  "keywords": [
+    "tcp-ip",
+    "tcp",
+    "ip",
+    "tcp/ip",
+    "connection",
+    "sockets",
+    "tcp",
+    "ip"
+  ],
+  "author": "Pedro Miguel Pereira Serrano Martins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan/issues"
+  },
+  "homepage": "https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan#readme",
+  "devDependencies": {
+    "chai": "^4.0.1",
+    "jsdoc": "^3.4.3",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.1",
+    "sinon": "^2.3.2"
+  }
+}

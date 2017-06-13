@@ -1,25 +1,31 @@
 "use strict";
 
-const heartBeat = () => {
+const isFunction = require("lodash.isfunction");
 
-    let interval = 3000,
-        timeout = 5000,
-        ping,
-        pong,
+const heartBeatFactory = (aPing, aPong) => {
+
+    const DEFAULT = {
+        TIMEOUT: 5000,
+        INTERVAL: 3000
+    };
+
+    let interval = DEFAULT.INTERVAL,
+        timeout = DEFAULT.TIMEOUT,
+        ping = aPing,
+        pong = aPong,
         timer,
-        lastHeartbeatTime = Date.now();
+        lastHeartbeatTime;
 
     const hasTimedOut = () =>
-        Date.now() - this.lastHeartbeatTime > this.timeout;
+        Date.now() - lastHeartbeatTime > timeout;
 
-
-    const getInterval = () => interval;
-    const setInterval = newInterval => {
+    const getBeatInterval = () => interval;
+    const setBeatInterval = newInterval => {
         interval = newInterval;
     };
 
-    const getTimeout = () => timeout;
-    const setTimeout = newTimeout => {
+    const getBeatTimeout = () => timeout;
+    const setBeatTimeout = newTimeout => {
         timeout = newTimeout;
     };
 
@@ -32,10 +38,42 @@ const heartBeat = () => {
     const setPong = newPong => {
         pong = newPong;
     };
+    const receivedPong = () => {
+        lastHeartbeatTime = Date.now();
+    };
+
+    const stop = () => {
+        lastHeartbeatTime = undefined;
+        clearInterval(timer);
+        timer = undefined;
+    };
+
+    const isBeating = () => timer !== undefined;
+
+    const start = sendPing => {
+        if (!isFunction(sendPing))
+            throw new TypeError(`${sendPing} must be a function.`);
+
+        lastHeartbeatTime = Date.now();
+        timer = setInterval(sendPing, 500);
+    };
 
     return {
-
+        getBeatInterval,
+        setBeatInterval,
+        getBeatTimeout,
+        setBeatTimeout,
+        hasTimedOut,
+        getPing,
+        setPing,
+        getPong,
+        receivedPong,
+        setPong,
+        stop,
+        start,
+        isBeating,
+        DEFAULT
     };
 };
 
-module.exports = heartBeat;
+module.exports = heartBeatFactory;

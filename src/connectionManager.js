@@ -1,6 +1,7 @@
 "use strict";
 
 const net = require("net");
+const isFunction = require("lodash.isfunction");
 
 const connManager = aHeartBeat => {
     const heartBeat = aHeartBeat;
@@ -25,7 +26,7 @@ const connManager = aHeartBeat => {
     };
 
     const connect = async function(connectOpts) {
-        if(connectOpts === undefined)
+        if (connectOpts === undefined)
             throw new Error("connect must have options");
         
         connection.options = connectOpts;
@@ -92,22 +93,32 @@ const connManager = aHeartBeat => {
     };
 
     const setOnClose = function(newFn) {
+        if (!isFunction(newFn))
+            throw new TypeError(`${newFn} must be a function.`);
         eventFns.onClose = newFn;
     };
 
     const setOnOpen = function(newFn) {
+        if (!isFunction(newFn))
+            throw new TypeError(`${newFn} must be a function.`);
         eventFns.onOpen = newFn;
     };
 
     const setOnRead = function(newFn) {
+        if (!isFunction(newFn))
+            throw new TypeError(`${newFn} must be a function.`);
         eventFns.onRead = newFn;
     };
 
     const setOnRetry = function(newFn) {
+        if (!isFunction(newFn))
+            throw new TypeError(`${newFn} must be a function.`);
         eventFns.onRetry = newFn;
     };
 
     const setConnectFn = function(newFn) {
+        if (!isFunction(newFn))
+            throw new TypeError(`${newFn} must be a function.`);
         connection.connectFn = newFn;
     };
 

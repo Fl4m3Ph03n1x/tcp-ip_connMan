@@ -4,7 +4,7 @@ const chai = require("chai");
 const expect = chai.expect;
 const sinon = require("sinon");
 const connManager = require("../../src/connectionManager.js");
-const heartBeatFactory = require("../../src/heartbeat.js");
+const heartBeatFactory = require("heartbeatjs");
 const dummyServerFactory = require("./dummyServer.js");
 const net = require("net");
 
@@ -17,7 +17,10 @@ describe("connectionManager", () => {
 
     const PING = Buffer.from([0x01]),
         PONG = Buffer.from([0x02]);
-    const heartBeat = heartBeatFactory(PING, PONG);
+
+    const heartBeat = Object.assign({}, heartBeatFactory());
+    heartBeat.setPing(PING);
+    heartBeat.setPong(PONG);
     heartBeat.setBeatInterval(50);
 
     const client = Object.assign({}, connManager(heartBeat));
@@ -64,7 +67,7 @@ describe("connectionManager", () => {
 
     it("should try to reconnect if the server is offline upon startup", done => {
         const retrySpy = sinon.spy();
-        client.setOnRetry(retrySpy);
+        client.onRetry(retrySpy);
 
         server.stop()
             .then(() => {
@@ -72,14 +75,9 @@ describe("connectionManager", () => {
             });
 
         setTimeout(() => {
-            server.start()
-                .catch(done);
-        }, 50);
-
-        setTimeout(() => {
             expect(retrySpy.called).to.be.true;
             done();
-        }, 100);
+        }, 50);
     });
 
     it("should reconnect if it looses connection to the server temporarily", done => {
@@ -102,19 +100,19 @@ describe("connectionManager", () => {
     });
 
     it("should throw if onOpen is not a function", () => {
-        expect(client.setOnOpen.bind(null, "notAFunction")).to.throw(TypeError);
+        expect(client.onOpen.bind(null, "notAFunction")).to.throw(TypeError);
     });
 
     it("should throw if onClose is not a function", () => {
-        expect(client.setOnClose.bind(null, "notAFunction")).to.throw(TypeError);
+        expect(client.onClose.bind(null, "notAFunction")).to.throw(TypeError);
     });
 
     it("should throw if onRead is not a function", () => {
-        expect(client.setOnRead.bind(null, "notAFunction")).to.throw(TypeError);
+        expect(client.onRead.bind(null, "notAFunction")).to.throw(TypeError);
     });
 
     it("should throw if onRetry is not a function", () => {
-        expect(client.setOnRetry.bind(null, "notAFunction")).to.throw(TypeError);
+        expect(client.onRetry.bind(null, "notAFunction")).to.throw(TypeError);
     });
 
     it("should throw if connectFn is not a function", () => {
@@ -123,18 +121,21 @@ describe("connectionManager", () => {
 
     it("should call 'onOpen' when a connection is created", done => {
         const openSpy = sinon.spy();
-        client.setOnOpen(openSpy);
+        client.onOpen(openSpy);
         client.connect(config)
             .then(() => {
-                expect(openSpy.calledOnce).to.be.true;
-                done();
+                //avoid race condition
+                setTimeout(() => {
+                    expect(openSpy.called).to.be.true;
+                    done();
+                }, 100);
             })
             .catch(done);
     });
 
     it("should call 'onClose' when a connection is lost", done => {
         const closeSpy = sinon.spy();
-        client.setOnClose(closeSpy);
+        client.onClose(closeSpy);
         client.connect(config)
             .then(client.disconnect)
             .then(() => {
@@ -146,7 +147,7 @@ describe("connectionManager", () => {
 
     it("should call 'onRetry' when it tries to reconnect", done => {
         const retrySpy = sinon.spy();
-        client.setOnRetry(retrySpy);
+        client.onRetry(retrySpy);
         client.connect(config);
 
         setTimeout(() => {
@@ -167,7 +168,7 @@ describe("connectionManager", () => {
             expect(receivedData).to.eql(data);
             done();
         });
-        client.setOnRead(readStub);
+        client.onRead(readStub);
 
         client.connect(config)
             .then(() => server.send(data))
@@ -179,7 +180,7 @@ describe("connectionManager", () => {
         const readStub = sinon.stub().callsFake(() => {
             done("onRead was called and should not have been called.");
         });
-        client.setOnRead(readStub);
+        client.onRead(readStub);
 
         client.connect(config)
             .then(() => server.send(PONG))
@@ -243,7 +244,7 @@ describe("connectionManager", () => {
 
     it("should disconnect if it timesout", done => {
         const closeSpy = sinon.spy();
-        client.setOnClose(closeSpy);
+        client.onClose(closeSpy);
 
         heartBeat.setBeatTimeout(20);
         client.connect(config)
@@ -252,36 +253,16 @@ describe("connectionManager", () => {
         setTimeout(() => {
             expect(closeSpy.called).to.be.true;
             done();
-        }, 500);
-    });
-
-    it("should reconnect if it timesout", done => {
-
-        heartBeat.setBeatInterval(10);
-        heartBeat.setBeatTimeout(20);
-
-        client.connect(config)
-            .then(() => {
-
-                const openSpy = sinon.spy();
-                client.setOnOpen(openSpy);
-                setTimeout(() => {
-                    expect(openSpy.called).to.be.true;
-                    done();
-                }, 1000);
-            })
-            .catch(done);
-
-
+        }, 100);
     });
 
     it("should disconnect if it fails to send a ping", done => {
-        
-        sinon.stub(heartBeat,"getPing").throws();
-        
+
+        sinon.stub(heartBeat, "getPing").throws();
+
         const closeSpy = sinon.spy();
-        client.setOnClose(closeSpy);
-        
+        client.onClose(closeSpy);
+
         heartBeat.setBeatTimeout(1000);
         client.connect(config)
             .catch(done);
@@ -290,7 +271,23 @@ describe("connectionManager", () => {
             expect(closeSpy.called).to.be.true;
             heartBeat.getPing.restore();
             done();
-        }, 1000);
+        }, 100);
+    });
+    
+    it("should attempt to reconnect when it timesout", done => {
+        
+        heartBeat.setBeatTimeout(1);
+        client.connect(config)
+            .then(() => {
+                
+                const openSpy = sinon.spy();
+                client.onOpen(openSpy);
+                setTimeout(() => {
+                    expect(openSpy.called).to.be.true; 
+                    done();
+                }, 50);
+            })
+            .catch(done);
     });
     
 });

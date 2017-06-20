@@ -3,6 +3,14 @@
 const net = require("net");
 const isFunction = require("lodash.isfunction");
 
+/**
+ *  @public
+ *  @author Pedro Miguel P. S. Martins
+ *  @version 1.0.0
+ *  @module connManager
+ *  @desc   Takes care of remote tcp-ip connections by attempting automatic 
+ *          reconnects and handling timeouts.
+ */
 const connManager = aHeartBeat => {
     const heartBeat = aHeartBeat;
 
@@ -44,15 +52,11 @@ const connManager = aHeartBeat => {
                 eventFns.onRetry(err, connection.retriesCnt);
             }
         }
+        heartBeat.onTimeout(reconnect);
         heartBeat.start(pingFn);
     };
 
     const pingFn = function() {
-        if (heartBeat.hasTimedOut()) {
-            reconnect();
-            return;
-        }
-        
         try {
             send(heartBeat.getPing());
         }
@@ -61,7 +65,8 @@ const connManager = aHeartBeat => {
             reconnect();
         }
     };
-
+    
+    
     const reconnect = () => {
         disconnect();
         connect(connection.options); //attempt reconnect and restart cycle
@@ -92,25 +97,25 @@ const connManager = aHeartBeat => {
         connection.socket.write(message);
     };
 
-    const setOnClose = function(newFn) {
+    const onClose = function(newFn) {
         if (!isFunction(newFn))
             throw new TypeError(`${newFn} must be a function.`);
         eventFns.onClose = newFn;
     };
 
-    const setOnOpen = function(newFn) {
+    const onOpen = function(newFn) {
         if (!isFunction(newFn))
             throw new TypeError(`${newFn} must be a function.`);
         eventFns.onOpen = newFn;
     };
 
-    const setOnRead = function(newFn) {
+    const onRead = function(newFn) {
         if (!isFunction(newFn))
             throw new TypeError(`${newFn} must be a function.`);
         eventFns.onRead = newFn;
     };
 
-    const setOnRetry = function(newFn) {
+    const onRetry = function(newFn) {
         if (!isFunction(newFn))
             throw new TypeError(`${newFn} must be a function.`);
         eventFns.onRetry = newFn;
@@ -127,10 +132,10 @@ const connManager = aHeartBeat => {
         disconnect,
         isConnected,
         send,
-        setOnClose,
-        setOnOpen,
-        setOnRead,
-        setOnRetry,
+        onClose,
+        onOpen,
+        onRead,
+        onRetry,
         setConnectFn
     });
 };

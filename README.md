@@ -46,15 +46,15 @@ API as well.
 
 ##  API
 
- - connect,
- - disconnect,
- - isConnected,
- - send,
- - onClose,
- - onOpen,
- - onRead,
- - onRetry,
- - setConnectFn
+ - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~connect" target="_blank">connect</a>
+ - <a href="" target="_blank">disconnect</a>
+ - <a href="" target="_blank">isConnected</a>isConnected
+ - <a href="" target="_blank">send</a>
+ - <a href="" target="_blank">onClose</a>onClose
+ - <a href="" target="_blank">onOpen</a>
+ - <a href="" target="_blank">onRead</a>
+ - <a href="" target="_blank">onRetry</a>
+ - <a href="" target="_blank">setConnectFn</a>
 
 ##  Examples
 

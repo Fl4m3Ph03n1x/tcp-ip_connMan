@@ -1,4 +1,45 @@
-"use strict";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>connectionManager.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-connManager.html">connManager</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~connect">connect</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~disconnect">disconnect</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~isConnected">isConnected</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onClose">onClose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onOpen">onOpen</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onRead">onRead</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onRetry">onRetry</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~send">send</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~setConnectFn">setConnectFn</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">connectionManager.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
 
 const net = require("net");
 const isFunction = require("lodash.isfunction");
@@ -38,40 +79,40 @@ const connManager = aHeartBeat => {
      *  @func       connect
      *  @param      {Object}    connectOpts An object with connect options. This
      *                                      is the object that will be passed to
-     *                                      <code>connectFn</code> to attempt 
+     *                                      &lt;code>connectFn&lt;/code> to attempt 
      *                                      connect. The default 
-     *                                      <code>connectFn</code> makes a socket
+     *                                      &lt;code>connectFn&lt;/code> makes a socket
      *                                      connection, so the connections 
      *                                      object passed to the default should 
      *                                      be the one used is 
-     *                                      <code>net.createConnection()</code>.
+     *                                      &lt;code>net.createConnection()&lt;/code>.
      *  @returns    {Promise} 
      *  @throws     {Error}     If there is no connection options. There must 
-     *                          always be a <code>connectOpts</code> parameter.
+     *                          always be a &lt;code>connectOpts&lt;/code> parameter.
      * 
-     *  @description    <p>
+     *  @description    &lt;p>
      *                      Attempts to connect to the tcp-ip server provided 
      *                      with the given options.
-     *                  </p>
-     *                  <p>
+     *                  &lt;/p>
+     *                  &lt;p>
      *                      It will not resolve until a connection is made. Once
-     *                      a connection is made it fires <code>onOpen</code>, 
+     *                      a connection is made it fires &lt;code>onOpen&lt;/code>, 
      *                      and every time it retries to establish a connection 
-     *                      it fires <code>onRetry()</code>.
-     *                  </p>
-     *                  <p>
+     *                      it fires &lt;code>onRetry()&lt;/code>.
+     *                  &lt;/p>
+     *                  &lt;p>
      *                      Once a connection is established, it starts the 
      *                      heartbeat to periodically check the health of the 
      *                      target. If the connection dies or times out, it 
-     *                      fires <code>onClose</code> and automatic 
+     *                      fires &lt;code>onClose&lt;/code> and automatic 
      *                      reconnection is attempted, called 
-     *                      <code>onRetry</code> for every failed attempt.
-     *                  </p>
+     *                      &lt;code>onRetry&lt;/code> for every failed attempt.
+     *                  &lt;/p>
      *                  
      *  @see            {@link https://nodejs.org/api/net.html#net_net_createconnection|net.createConnection()}
-     *  @see            <code>onOpen</code>
-     *  @see            <code>onRetry</code>
-     *  @see            <code>onClose</code>
+     *  @see            &lt;code>onOpen&lt;/code>
+     *  @see            &lt;code>onRetry&lt;/code>
+     *  @see            &lt;code>onClose&lt;/code>
      */
     const connect = async function(connectOpts) {
         if (connectOpts === undefined)
@@ -117,8 +158,8 @@ const connManager = aHeartBeat => {
      *  @func       disconnect
      *              
      *  @description    Kills the connection to the target, stops the heartbeat
-     *                  and fires <code>onClose</code>
-     *  @see            <code>onClose</code>
+     *                  and fires &lt;code>onClose&lt;/code>
+     *  @see            &lt;code>onClose&lt;/code>
      */
     const disconnect = function() {
         heartBeat.stop();
@@ -129,15 +170,15 @@ const connManager = aHeartBeat => {
     /**
      *  @public 
      *  @func       isConnected
-     *  @returns    {Boolean}   <code>true</code> if the connection is up, 
-     *                          <code>false</code> otherwise.
+     *  @returns    {Boolean}   &lt;code>true&lt;/code> if the connection is up, 
+     *                          &lt;code>false&lt;/code> otherwise.
      * 
-     *  @description    Returns <code>true</code> if the connection is up, 
-     *                  <code>false</code> otherwise. If a reconnection is taking
-     *                  place, it will still return <code>false</code>.
+     *  @description    Returns &lt;code>true&lt;/code> if the connection is up, 
+     *                  &lt;code>false&lt;/code> otherwise. If a reconnection is taking
+     *                  place, it will still return &lt;code>false&lt;/code>.
      */
     const isConnected = function() {
-        return heartBeat.isBeating() && !connection.socket.destroyed;
+        return heartBeat.isBeating() &amp;&amp; !connection.socket.destroyed;
     };
 
     const read = function(data) {
@@ -153,10 +194,10 @@ const connManager = aHeartBeat => {
      *  @func       send
      *  @param      {Object}    message     The message object we want to send.
      *  @throws     {Error}     If the connection is down. You can check this 
-     *                          via <code>isConnected</code>.
+     *                          via &lt;code>isConnected&lt;/code>.
      * 
      *  @description    Sends a message to the target.
-     *  @see            <code>isConnected</code>
+     *  @see            &lt;code>isConnected&lt;/code>
      */
     const send = function(message) {
         if (connection.socket.destroyed)
@@ -169,12 +210,12 @@ const connManager = aHeartBeat => {
      *  @public 
      *  @func       onClose
      *  @param      {Function}  newFn   The function to run when the 
-     *                                  <b>onClose</b> event is fired.  
-     *  @throws     {TypeError} If <code>newFn</code> is not a function.
+     *                                  &lt;b>onClose&lt;/b> event is fired.  
+     *  @throws     {TypeError} If &lt;code>newFn&lt;/code> is not a function.
      * 
-     *  @description    Runs the given function every time the <b>onClose</b>
+     *  @description    Runs the given function every time the &lt;b>onClose&lt;/b>
      *                  event is triggered, passing it the argument 
-     *                  <code>false</code>.
+     *                  &lt;code>false&lt;/code>.
      */
     const onClose = function(newFn) {
         if (!isFunction(newFn))
@@ -186,12 +227,12 @@ const connManager = aHeartBeat => {
      *  @public 
      *  @func       onOpen
      *  @param      {Function}  newFn   The function to run when the 
-     *                                  <b>onOpen</b> event is fired. 
-     *  @throws     {TypeError} If <code>newFn</code> is not a function.
+     *                                  &lt;b>onOpen&lt;/b> event is fired. 
+     *  @throws     {TypeError} If &lt;code>newFn&lt;/code> is not a function.
      * 
-     *  @description    Runs the given function every time the <b>onOpen</b>
+     *  @description    Runs the given function every time the &lt;b>onOpen&lt;/b>
      *                  event is triggered, passing it the argument 
-     *                  code>true</code>.
+     *                  code>true&lt;/code>.
      */
     const onOpen = function(newFn) {
         if (!isFunction(newFn))
@@ -203,10 +244,10 @@ const connManager = aHeartBeat => {
      *  @public 
      *  @func       onRead
      *  @param      {Function}  newFn   The function to run when the 
-     *                                  <b>onRead</b> event is fired. 
-     *  @throws     {TypeError} If <code>newFn</code> is not a function. 
+     *                                  &lt;b>onRead&lt;/b> event is fired. 
+     *  @throws     {TypeError} If &lt;code>newFn&lt;/code> is not a function. 
      * 
-     *  @description    Runs the given function every time the <b>onRead</b>
+     *  @description    Runs the given function every time the &lt;b>onRead&lt;/b>
      *                  event is triggered, passing it the received data as 
      *                  an argument.
      */
@@ -220,10 +261,10 @@ const connManager = aHeartBeat => {
      *  @public 
      *  @func       onRetry
      *  @param      {Function}  newFn   The function to run when the 
-     *                                  <b>onRetry</b> event is fired. 
-     *  @throws     {TypeError} If <code>newFn</code> is not a function.
+     *                                  &lt;b>onRetry&lt;/b> event is fired. 
+     *  @throws     {TypeError} If &lt;code>newFn&lt;/code> is not a function.
      * 
-     *  @description    Runs the given function every time the <b>onRetry</b>
+     *  @description    Runs the given function every time the &lt;b>onRetry&lt;/b>
      *                  event is triggered, passing it the error that caused the
      *                  retry, as well as a count of the number of retries.
      */
@@ -237,10 +278,10 @@ const connManager = aHeartBeat => {
      *  @public 
      *  @func       setConnectFn
      *  @param      {Function}      newFn   The function to be used when 
-     *                                      <code>connect</code> is called and 
+     *                                      &lt;code>connect&lt;/code> is called and 
      *                                      every time automatic reconnection 
      *                                      takes place.
-     *  @throws     {TypeError} If <code>newFn</code> is not a function.
+     *  @throws     {TypeError} If &lt;code>newFn&lt;/code> is not a function.
      * 
      *  @description    Used when you need to custom connect function because 
      *                  the target has a specific handshake or protocol. The 
@@ -267,3 +308,22 @@ const connManager = aHeartBeat => {
 };
 
 module.exports = connManager;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Jun 20 2017 13:05:35 GMT+0000 (UTC) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

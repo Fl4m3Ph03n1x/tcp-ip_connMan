@@ -37,7 +37,7 @@ And for questions you can ask in the issues page:
 
  - [tcp-ip_connMan Issues](https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan/issues)
 
-Feel free to check the project's project page for additional information on the 
+Feel free to check the [project's page](https://fl4m3ph03n1x.github.io/tcp-ip_connMan/index.html) for additional information on the 
 API as well.
 
 ##  Install

@@ -39,7 +39,7 @@ describe("connectionManager", () => {
             .then(done)
             .catch(done);
     });
-
+    
     it("should connect to the server", done => {
         client.connect(config)
             .then(() => {
@@ -286,6 +286,22 @@ describe("connectionManager", () => {
                     expect(openSpy.called).to.be.true; 
                     done();
                 }, 50);
+            })
+            .catch(done);
+    });
+    
+    it("should connect with no heartBeat provided", done => {
+        const defaultClient = connManager();
+        const openSpy = sinon.spy();
+        defaultClient.onOpen(openSpy);
+        
+        defaultClient.connect(config)
+            .then(() => {
+                //avoid race condition
+                setTimeout(() => {
+                    expect(openSpy.called).to.be.true;
+                    done();
+                }, 100);
             })
             .catch(done);
     });

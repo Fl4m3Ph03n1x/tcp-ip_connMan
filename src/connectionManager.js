@@ -1,6 +1,7 @@
 "use strict";
 
 const net = require("net");
+const heartBeatFactory = require("heartbeatjs");
 const isFunction = require("lodash.isfunction");
 
 /**
@@ -11,8 +12,13 @@ const isFunction = require("lodash.isfunction");
  *  @desc   Takes care of remote tcp-ip connections by attempting automatic 
  *          reconnects and handling timeouts.
  */
-const connManager = aHeartBeat => {
-    const heartBeat = aHeartBeat;
+const connManager = (heartBeat = heartBeatFactory()) => {
+
+    if (heartBeat.getPing() === undefined)
+        heartBeat.setPing(Buffer.from([0x01]));
+
+    if (heartBeat.getPong() === undefined)
+        heartBeat.setPong(Buffer.from([0x02]));
 
     const eventFns = {
         onClose: () => {},

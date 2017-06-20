@@ -1,5 +1,5 @@
 {
-  "name": "tcp-ip-connMan",
+  "name": "tcp-ip-connman",
   "version": "1.0.0",
   "description": "Connection manager for tcp/ip connections",
   "main": "./src/connectionManager.js",

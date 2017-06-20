@@ -31,11 +31,11 @@ manages timeouts and connection drops automatically reconnecting for you.
 Following are instructions on how to intsall and use `tcp-ip-connman`. For more
 information about the project you can check the GitHub page:
 
- - [tcp-ip-connman Github](https://github.com/Fl4m3Ph03n1x/tcp-ip_connman)
+ - [tcp-ip-connman Github](https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan)
 
 And for questions you can ask in the issues page:
 
- - [tcp-ip-connman Issues](https://github.com/Fl4m3Ph03n1x/tcp-ip_connman/issues)
+ - [tcp-ip-connman Issues](https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan/issues)
 
 Feel free to check the project's project page for additional information on the
 API as well.

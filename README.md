@@ -31,13 +31,13 @@ manages timeouts and connection drops automatically reconnecting for you.
 Following are instructions on how to intsall and use `tcp-ip-connman`. For more
 information about the project you can check the GitHub page:
 
- - [tcp-ip-connman Github](https://github.com/Fl4m3Ph03n1x/tcp-ip_connman)
+ - [tcp-ip-connman Github](https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan)
 
 And for questions you can ask in the issues page:
 
- - [tcp-ip-connman Issues](https://github.com/Fl4m3Ph03n1x/tcp-ip_connman/issues)
+ - [tcp-ip-connman Issues](https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan/issues)
 
-Feel free to check the [project's page](https://fl4m3ph03n1x.github.io/tcp-ip_connman/index.html) for additional information on the
+Feel free to check the [project's page](https://fl4m3ph03n1x.github.io/tcp-ip_connMan/index.html) for additional information on the
 API as well.
 
 ##  Install
@@ -46,15 +46,15 @@ API as well.
 
 ##  API
 
- - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connman/module-connmanager.html#~connect" target="_blank">connect</a>
- - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connman/module-connmanager.html#~disconnect" target="_blank">disconnect</a>
- - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connman/module-connmanager.html#~isConnected" target="_blank">isConnected</a>
- - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connman/module-connmanager.html#~send" target="_blank">send</a>
- - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connman/module-connmanager.html#~onClose" target="_blank">onClose</a>
- - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connman/module-connmanager.html#~onOpen" target="_blank">onOpen</a>
- - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connman/module-connmanager.html#~onRead" target="_blank">onRead</a>
- - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connman/module-connmanager.html#~onRetry" target="_blank">onRetry</a>
- - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connman/module-connmanager.html#~setConnectFn" target="_blank">setConnectFn</a>
+ - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~connect" target="_blank">connect</a>
+ - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~disconnect" target="_blank">disconnect</a>
+ - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~isConnected" target="_blank">isConnected</a>
+ - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~send" target="_blank">send</a>
+ - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onClose" target="_blank">onClose</a>
+ - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onOpen" target="_blank">onOpen</a>
+ - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onRead" target="_blank">onRead</a>
+ - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onRetry" target="_blank">onRetry</a>
+ - <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~setConnectFn" target="_blank">setConnectFn</a>
 
 ##  Examples
 

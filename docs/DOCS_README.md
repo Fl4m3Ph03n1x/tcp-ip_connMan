@@ -1,3 +1,12 @@
+[![NPM](https://nodei.co/npm/tcp-ip-connman.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/tcp-ip-connman/)
+
+[![Build Status](https://travis-ci.org/Fl4m3Ph03n1x/tcp-ip_connMan.svg?branch=master)](https://travis-ci.org/Fl4m3Ph03n1x/tcp-ip_connMan)
+[![codecov](https://codecov.io/gh/Fl4m3Ph03n1x/tcp-ip_connMan/branch/master/graph/badge.svg)](https://codecov.io/gh/Fl4m3Ph03n1x/tcp-ip_connMan)
+[![Dependency Status](https://www.versioneye.com/user/projects/595a3773368b08004129ff04/badge.svg)](https://www.versioneye.com/user/projects/595a3773368b08004129ff04)
+[![Code Climate](https://codeclimate.com/github/Fl4m3Ph03n1x/tcp-ip_connMan/badges/gpa.svg)](https://codeclimate.com/github/Fl4m3Ph03n1x/tcp-ip_connMan)
+[![Inline docs](http://inch-ci.org/github/Fl4m3Ph03n1x/tcp-ip_connMan.svg?branch=master)](http://inch-ci.org/github/Fl4m3Ph03n1x/tcp-ip_connMan)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+
 #   What
 
 `tcp-ip-connman` stands "tcp-ip Connection Manager". As the name says, it takes
@@ -36,9 +45,6 @@ information about the project you can check the GitHub page:
 And for questions you can ask in the issues page:
 
  - [tcp-ip-connman Issues](https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan/issues)
-
-Feel free to check the project's project page for additional information on the
-API as well.
 
 ##  Install
 

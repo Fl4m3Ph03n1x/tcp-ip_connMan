@@ -11,7 +11,7 @@ const noOptsException = errors.optionsNotProvided;
 /**
  *  @public
  *  @author Pedro Miguel P. S. Martins
- *  @version 1.0.1
+ *  @version 1.0.2
  *  @module connManager
  *  @desc   Takes care of remote tcp-ip connections by attempting automatic
  *          reconnects and handling timeouts.

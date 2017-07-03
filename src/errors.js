@@ -6,18 +6,16 @@
  *  @description    Error throw when one passes a <code>newFn</code> parameter
  *                  that is not a function to any of the following events:
  *                  <ul>
- *                      <li><code>onOpen</code></li>
- *                      <li><code>onClose</code></li>
- *                      <li><code>onRead</code></li>
- *                      <li><code>onRetry</code></li>
+ *                      <li><a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onOpen">onOpen</a></li>
+ *                      <li><a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onClose">onClose</a></li>
+ *                      <li><a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onRead">onRead</a></li>
+ *                      <li><a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onRetry">onRetry</a></li>
  *                  </ul>
- * @example
+ *  @example
  *
- * const watcher = require("obj-watcher");
- *
- * watcher.watch("status", { online: true });
- * //Throws, second parameter should be of type "function".
- * watcher.onChange("status", "I am not a function!");
+ *  const connmanager = require("tcp-ip-connman");
+ *  const client = connmanager();
+ *  client.onRead("I am not a function!"); //error
  */
 
 /**
@@ -25,15 +23,13 @@
  *  @property   {string}    name=ConnectHandlerNotAFunction    Name of the error.
  *  @property   {string}    message                            Message of the error.
  *
- *  @description     Error throw when one tries to <code>setConnectFn</code>
- *                   with something that is not a function.
+ *  @description     Error throw when one tries use <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~setConnectFn">setConnectFn</a>
+ *                   with a parameter that is not a function.
  *  @example
  *
- * const watcher = require("obj-watcher");
- *
- * watcher.watch("status", { online: true });
- * //Throws, second parameter should be of type "function".
- * watcher.onChange("status", "I am not a function!");
+ *  const connmanager = require("tcp-ip-connman");
+ *  const client = connmanager();
+ *  client.setConnectFn("I am not a function!"); //error
  */
 
 /**
@@ -46,11 +42,12 @@
  *                   meaning that there is no valid connection up.
  *  @example
  *
- * const watcher = require("obj-watcher");
+ *  const connmanager = require("tcp-ip-connman");
+ *  const client = connmanager();
+ *  console.log(isConnected()); //false!
  *
- * watcher.watch("status", { online: true });
- * //Throws, second parameter should be of type "function".
- * watcher.onChange("status", "I am not a function!");
+ *  //error, there is no connection or the connection is down
+ *  client.send("I didn't connect b4!");
  */
 
  /**
@@ -58,15 +55,13 @@
   *  @property   {string}   name=OptionsNotProvided Name of the error.
   *  @property   {string}   message                 Message of the error.
   *
-  *  @description     Error throw when one tries to use <code>connect</code>
+  *  @description     Error throw when one tries to use <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~connect">connect</a>
   *                   without passing an options parameter.
   *  @example
   *
-  * const watcher = require("obj-watcher");
-  *
-  * watcher.watch("status", { online: true });
-  * //Throws, second parameter should be of type "function".
-  * watcher.onChange("status", "I am not a function!");
+  *  const connmanager = require("tcp-ip-connman");
+  *  const client = connmanager();
+  *  client.connect(); //error, a parameter is necessary
   */
 
 /**
@@ -82,7 +77,7 @@
  */
 const errorFactory = ( name, message, errorType = new Error() ) => {
     const error = errorType;
-    error.message = message + " See https://fl4m3ph03n1x.github.io/obj-watcher/global.html for more info on errors.";
+    error.message = message + ` See https://fl4m3ph03n1x.github.io/tcp-ip_connMan/global.html#${name} for more info on errors.`;
     error.name = name;
     return error;
 };

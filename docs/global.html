@@ -125,10 +125,10 @@
     Error throw when one passes a <code>newFn</code> parameter
                  that is not a function to any of the following events:
                  <ul>
-                     <li><code>onOpen</code></li>
-                     <li><code>onClose</code></li>
-                     <li><code>onRead</code></li>
-                     <li><code>onRetry</code></li>
+                     <li><a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onOpen">onOpen</a></li>
+                     <li><a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onClose">onClose</a></li>
+                     <li><a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onRead">onRead</a></li>
+                     <li><a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onRetry">onRetry</a></li>
                  </ul>
 </div>
 
@@ -285,11 +285,9 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const watcher = require("obj-watcher");
-
-watcher.watch("status", { online: true });
-//Throws, second parameter should be of type "function".
-watcher.onChange("status", "I am not a function!");</code></pre>
+    <pre class="prettyprint"><code>const connmanager = require("tcp-ip-connman");
+ const client = connmanager();
+ client.onRead("I am not a function!"); //error</code></pre>
 
 
 </div>
@@ -303,8 +301,8 @@ watcher.onChange("status", "I am not a function!");</code></pre>
 
 
 <div class="description">
-    Error throw when one tries to <code>setConnectFn</code>
-                  with something that is not a function.
+    Error throw when one tries use <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~setConnectFn">setConnectFn</a>
+                  with a parameter that is not a function.
 </div>
 
 
@@ -431,7 +429,7 @@ watcher.onChange("status", "I am not a function!");</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="errors.js.html">errors.js</a>, <a href="errors.js.html#line23">line 23</a>
+        <a href="errors.js.html">errors.js</a>, <a href="errors.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -460,11 +458,9 @@ watcher.onChange("status", "I am not a function!");</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const watcher = require("obj-watcher");
-
-watcher.watch("status", { online: true });
-//Throws, second parameter should be of type "function".
-watcher.onChange("status", "I am not a function!");</code></pre>
+    <pre class="prettyprint"><code>const connmanager = require("tcp-ip-connman");
+ const client = connmanager();
+ client.setConnectFn("I am not a function!"); //error</code></pre>
 
 
 </div>
@@ -607,7 +603,7 @@ watcher.onChange("status", "I am not a function!");</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="errors.js.html">errors.js</a>, <a href="errors.js.html#line39">line 39</a>
+        <a href="errors.js.html">errors.js</a>, <a href="errors.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -636,11 +632,12 @@ watcher.onChange("status", "I am not a function!");</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const watcher = require("obj-watcher");
+    <pre class="prettyprint"><code>const connmanager = require("tcp-ip-connman");
+ const client = connmanager();
+ console.log(isConnected()); //false!
 
-watcher.watch("status", { online: true });
-//Throws, second parameter should be of type "function".
-watcher.onChange("status", "I am not a function!");</code></pre>
+ //error, there is no connection or the connection is down
+ client.send("I didn't connect b4!");</code></pre>
 
 
 </div>
@@ -654,7 +651,7 @@ watcher.onChange("status", "I am not a function!");</code></pre>
 
 
 <div class="description">
-    Error throw when one tries to use <code>connect</code>
+    Error throw when one tries to use <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~connect">connect</a>
                   without passing an options parameter.
 </div>
 
@@ -782,7 +779,7 @@ watcher.onChange("status", "I am not a function!");</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="errors.js.html">errors.js</a>, <a href="errors.js.html#line56">line 56</a>
+        <a href="errors.js.html">errors.js</a>, <a href="errors.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -811,11 +808,9 @@ watcher.onChange("status", "I am not a function!");</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const watcher = require("obj-watcher");
-
-watcher.watch("status", { online: true });
-//Throws, second parameter should be of type "function".
-watcher.onChange("status", "I am not a function!");</code></pre>
+    <pre class="prettyprint"><code>const connmanager = require("tcp-ip-connman");
+ const client = connmanager();
+ client.connect(); //error, a parameter is necessary</code></pre>
 
 
 </div>
@@ -836,7 +831,7 @@ watcher.onChange("status", "I am not a function!");</code></pre>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Jul 03 2017 14:13:14 GMT+0200 (CEST) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Jul 03 2017 14:42:34 GMT+0200 (CEST) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

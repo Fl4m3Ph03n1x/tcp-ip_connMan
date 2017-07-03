@@ -2,7 +2,7 @@ const net = require("net");
 const heartBeatFactory = require("heartbeatjs");
 const isFunction = require("lodash.isfunction");
 const errors = require("./errors.js");
-const cbNotAFunction = errors.callbackNotAFunction;
+const cbException = errors.callbackNotAFunction;
 const connectHandlerNotAFunction = errors.connectHandlerNotAFunction;
 
 
@@ -186,7 +186,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const onClose = function(newFn) {
         if (!isFunction(newFn))
-            throw cbNotAFunction(newFn, "onClose");
+            throw cbException(newFn, "onClose");
         eventFns.onClose = newFn;
     };
 
@@ -203,7 +203,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const onOpen = function(newFn) {
         if (!isFunction(newFn))
-            throw cbNotAFunction(newFn, "onOpen");
+            throw cbException(newFn, "onOpen");
         eventFns.onOpen = newFn;
     };
 
@@ -220,7 +220,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const onRead = function(newFn) {
         if (!isFunction(newFn))
-            throw cbNotAFunction(newFn, "onRead");
+            throw cbException(newFn, "onRead");
         eventFns.onRead = newFn;
     };
 
@@ -237,7 +237,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const onRetry = function(newFn) {
         if (!isFunction(newFn))
-            throw cbNotAFunction(newFn, "onRetry");
+            throw cbException(newFn, "onRetry");
         eventFns.onRetry = newFn;
     };
 

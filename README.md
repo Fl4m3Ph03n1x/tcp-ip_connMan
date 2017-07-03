@@ -1,3 +1,11 @@
+
+[![NPM](https://nodei.co/npm/tcp-ip-connman.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/tcp-ip-connman/)
+
+
+[![Build Status](https://travis-ci.org/Fl4m3Ph03n1x/tcp-ip_connMan.svg?branch=master)](https://travis-ci.org/Fl4m3Ph03n1x/tcp-ip_connMan)
+
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+
 #   What
 
 `tcp-ip-connman` stands "tcp-ip Connection Manager". As the name says, it takes
@@ -28,12 +36,8 @@ manages timeouts and connection drops automatically reconnecting for you.
 
 #   How
 
-Following are instructions on how to intsall and use `tcp-ip-connman`. For more
-information about the project you can check the GitHub page:
-
- - [tcp-ip-connman Github](https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan)
-
-And for questions you can ask in the issues page:
+Following are instructions on how to intsall and use `tcp-ip-connman`. For
+questions you can ask in the issues page:
 
  - [tcp-ip-connman Issues](https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan/issues)
 

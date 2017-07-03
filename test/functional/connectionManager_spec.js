@@ -1,5 +1,3 @@
-"use strict";
-
 const chai = require("chai");
 const expect = chai.expect;
 const sinon = require("sinon");
@@ -7,7 +5,6 @@ const connManager = require("../../src/connectionManager.js");
 const heartBeatFactory = require("heartbeatjs");
 const dummyServerFactory = require("./dummyServer.js");
 const net = require("net");
-
 
 describe("connectionManager", () => {
     const config = {
@@ -39,7 +36,7 @@ describe("connectionManager", () => {
             .then(done)
             .catch(done);
     });
-    
+
     it("should connect to the server", done => {
         client.connect(config)
             .then(() => {
@@ -273,28 +270,28 @@ describe("connectionManager", () => {
             done();
         }, 100);
     });
-    
+
     it("should attempt to reconnect when it timesout", done => {
-        
+
         heartBeat.setBeatTimeout(1);
         client.connect(config)
             .then(() => {
-                
+
                 const openSpy = sinon.spy();
                 client.onOpen(openSpy);
                 setTimeout(() => {
-                    expect(openSpy.called).to.be.true; 
+                    expect(openSpy.called).to.be.true;
                     done();
                 }, 50);
             })
             .catch(done);
     });
-    
+
     it("should connect with no heartBeat provided", done => {
         const defaultClient = connManager();
         const openSpy = sinon.spy();
         defaultClient.onOpen(openSpy);
-        
+
         defaultClient.connect(config)
             .then(() => {
                 //avoid race condition
@@ -305,5 +302,5 @@ describe("connectionManager", () => {
             })
             .catch(done);
     });
-    
+
 });

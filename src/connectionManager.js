@@ -1,6 +1,7 @@
 const net = require("net");
 const heartBeatFactory = require("heartbeatjs");
 const isFunction = require("lodash.isfunction");
+const callbackNotAFunction = require("./errors.js").callbackNotAFunction;
 
 /**
  *  @public
@@ -182,7 +183,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const onClose = function(newFn) {
         if (!isFunction(newFn))
-            throw new TypeError(`${newFn} must be a function.`);
+            throw callbackNotAFunction(newFn, "onClose");
         eventFns.onClose = newFn;
     };
 
@@ -199,7 +200,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const onOpen = function(newFn) {
         if (!isFunction(newFn))
-            throw new TypeError(`${newFn} must be a function.`);
+            throw callbackNotAFunction(newFn, "onOpen");
         eventFns.onOpen = newFn;
     };
 
@@ -216,7 +217,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const onRead = function(newFn) {
         if (!isFunction(newFn))
-            throw new TypeError(`${newFn} must be a function.`);
+            throw callbackNotAFunction(newFn, "onRead");
         eventFns.onRead = newFn;
     };
 
@@ -233,7 +234,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const onRetry = function(newFn) {
         if (!isFunction(newFn))
-            throw new TypeError(`${newFn} must be a function.`);
+            throw callbackNotAFunction(newFn, "onRetry");
         eventFns.onRetry = newFn;
     };
 
@@ -256,6 +257,8 @@ const connManager = (heartBeat = heartBeatFactory()) => {
             throw new TypeError(`${newFn} must be a function.`);
         connection.connectFn = newFn;
     };
+
+
 
     return Object.freeze({
         connect,

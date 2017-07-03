@@ -20,13 +20,46 @@
  * watcher.onChange("status", "I am not a function!");
  */
 
+/**
+ *  @typedef    {TypeError} ConnectHandlerNotAFunction
+ *  @property   {string}    name=ConnectHandlerNotAFunction    Name of the error.
+ *  @property   {string}    message                            Message of the error.
+ *
+ *  @description     Error throw when one tries to <code>setConnectFn</code>
+ *                   with something that is not a function.
+ *  @example
+ *
+ * const watcher = require("obj-watcher");
+ *
+ * watcher.watch("status", { online: true });
+ * //Throws, second parameter should be of type "function".
+ * watcher.onChange("status", "I am not a function!");
+ */
+
+/**
+ *  @typedef    {Error}    ConnectionDown
+ *  @property   {string}   name=ConnectionDown Name of the error.
+ *  @property   {string}   message             Message of the error.
+ *
+ *  @description     Error throw when one tries to use <code>send</code>
+ *                   and the socket used in the connection is destroyed,
+ *                   meaning that there is no valid connection up.
+ *  @example
+ *
+ * const watcher = require("obj-watcher");
+ *
+ * watcher.watch("status", { online: true });
+ * //Throws, second parameter should be of type "function".
+ * watcher.onChange("status", "I am not a function!");
+ */
+
  /**
-  *  @typedef    {TypeError} ConnectHandlerNotAFunction
-  *  @property   {string}    name=ConnectHandlerNotAFunction    Name of the error.
-  *  @property   {string}    message                            Message of the error.
+  *  @typedef    {Error}    OptionsNotProvided
+  *  @property   {string}   name=OptionsNotProvided Name of the error.
+  *  @property   {string}   message                 Message of the error.
   *
-  *  @description     Error throw when one tries to <code>setConnectFn</code>
-  *                   with something that is not a function.
+  *  @description     Error throw when one tries to use <code>connect</code>
+  *                   without passing an options parameter.
   *  @example
   *
   * const watcher = require("obj-watcher");
@@ -77,12 +110,38 @@ const callbackNotAFunction = ( callbackFn, eventName ) =>
  *  @returns    {TypeError}
  *
  *  @description    Creates a "ConnectHandlerNotAFunction" TypeError that is
- *                  returned when one tries to setConnectFn with something that
- *                  is not a function.
+ *                  returned when one calls <code>setConnectFn</code> with
+ *                  something that is not a function.
  */
 const connectHandlerNotAFunction = ( handler ) =>
     errorFactory( "ConnectHandlerNotAFunction", `Provided connect handler ${handler} for is not a function.`, new TypeError() );
 
+/**
+ *  @private
+ *  @func       connectionDown
+ *  @returns    {Error}
+ *
+ *  @description    Creates a "ConnectionDown" Error that is
+ *                  returned when one calls <code>send</code> a message without
+ *                  being connected.
+ */
+const connectionDown = () =>
+    errorFactory( "ConnectionDown", "Connection is down, message not delivered." );
+
+/**
+ *  @private
+ *  @func       optionsNotProvided
+ *  @returns    {Error}
+ *
+ *  @description    Creates a "OptionsNotProvided" Error that is
+ *                  returned when one invokes <code>connect</code> without
+ *                  providing an options parameter.
+ */
+const optionsNotProvided = () =>
+    errorFactory( "OptionsNotProvided", "'connect' must have options." );
+
 
 module.exports.callbackNotAFunction = callbackNotAFunction;
 module.exports.connectHandlerNotAFunction = connectHandlerNotAFunction;
+module.exports.connectionDown = connectionDown;
+module.exports.optionsNotProvided = optionsNotProvided;

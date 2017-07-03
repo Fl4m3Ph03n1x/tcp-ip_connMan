@@ -1,15 +1,17 @@
 const net = require( "net" );
 const heartBeatFactory = require( "heartbeatjs" );
 const isFunction = require( "lodash.isfunction" );
+
 const errors = require( "./errors.js" );
 const cbException = errors.callbackNotAFunction;
 const connHandlerException = errors.connectHandlerNotAFunction;
-
+const connDownException = errors.connectionDown;
+const noOptsException = errors.optionsNotProvided;
 
 /**
  *  @public
  *  @author Pedro Miguel P. S. Martins
- *  @version 1.0.0
+ *  @version 1.0.1
  *  @module connManager
  *  @desc   Takes care of remote tcp-ip connections by attempting automatic
  *          reconnects and handling timeouts.
@@ -54,8 +56,9 @@ const connManager = ( heartBeat = heartBeatFactory() ) => {
      *                                      be the one used is
      *                                      <code>net.createConnection()</code>.
      *  @returns    {Promise}
-     *  @throws     {Error}     If there is no connection options. There must
-     *                          always be a <code>connectOpts</code> parameter.
+     *  @throws     {OptionsNotProvided}    If there is no connection options.
+     *                                      There must always be a
+     *                                      <code>connectOpts</code> parameter.
      *
      *  @description    <p>
      *                      Attempts to connect to the tcp-ip server provided
@@ -83,7 +86,7 @@ const connManager = ( heartBeat = heartBeatFactory() ) => {
      */
     const connect = async function ( connectOpts ) {
         if ( connectOpts === undefined )
-            throw new Error( "connect must have options" );
+            throw noOptsException();
 
         connection.options = connectOpts;
         let done = false;
@@ -135,7 +138,7 @@ const connManager = ( heartBeat = heartBeatFactory() ) => {
     /**
      *  @public
      *  @func       isConnected
-     *  @returns    {Boolean}   <code>true</code> if the connection is up,
+     *  @returns    {boolean}   <code>true</code> if the connection is up,
      *                          <code>false</code> otherwise.
      *
      *  @description    Returns <code>true</code> if the connection is up,
@@ -157,16 +160,16 @@ const connManager = ( heartBeat = heartBeatFactory() ) => {
     /**
      *  @public
      *  @func       send
-     *  @param      {Object}    message     The message object we want to send.
-     *  @throws     {Error}     If the connection is down. You can check this
-     *                          via <code>isConnected</code>.
+     *  @param      {Object}  message The message object we want to send.
+     *  @throws     {ConnectionDown}  If the connection is down. You can check
+     *                                this via <code>isConnected</code>.
      *
      *  @description    Sends a message to the target.
      *  @see            <code>isConnected</code>
      */
     const send = function ( message ) {
-        if ( connection.socket.destroyed )
-            throw new Error( "Connection is down, message not delivered." );
+        if ( !isConnected() )
+            throw connDownException();
 
         connection.socket.write( message );
     };
@@ -174,64 +177,68 @@ const connManager = ( heartBeat = heartBeatFactory() ) => {
     /**
      *  @public
      *  @func       onClose
-     *  @param      {Function}  newFn   The function to run when the
-     *                                  <b>onClose</b> event is fired.
-     *  @throws     {CallbackNotAFunction} If <code>newFn</code> is not a function.
+     *  @param      {function}  newFn       The function to run when the
+     *                                      <b>onClose</b> event is fired.
+     *  @throws     {CallbackNotAFunction}  If <code>newFn</code> is not a
+     *                                      function.
      *
      *  @description    Runs the given function every time the <b>onClose</b>
      *                  event is triggered, passing it the argument
      *                  <code>false</code>.
      */
     const onClose = function ( newFn ) {
-        registerCallback( newFn, "onClose" );
+        registerEventCallback( newFn, "onClose" );
     };
 
     /**
      *  @public
      *  @func       onOpen
-     *  @param      {Function}  newFn   The function to run when the
-     *                                  <b>onOpen</b> event is fired.
-     *  @throws     {CallbackNotAFunction} If <code>newFn</code> is not a function.
+     *  @param      {function}  newFn       The function to run when the
+     *                                      <b>onOpen</b> event is fired.
+     *  @throws     {CallbackNotAFunction}  If <code>newFn</code> is not a
+     *                                      function.
      *
      *  @description    Runs the given function every time the <b>onOpen</b>
      *                  event is triggered, passing it the argument
      *                  code>true</code>.
      */
     const onOpen = function ( newFn ) {
-        registerCallback( newFn, "onOpen" );
+        registerEventCallback( newFn, "onOpen" );
     };
 
     /**
      *  @public
      *  @func       onRead
-     *  @param      {Function}  newFn   The function to run when the
-     *                                  <b>onRead</b> event is fired.
-     *  @throws     {CallbackNotAFunction} If <code>newFn</code> is not a function.
+     *  @param      {function}  newFn       The function to run when the
+     *                                      <b>onRead</b> event is fired.
+     *  @throws     {CallbackNotAFunction}  If <code>newFn</code> is not a
+     *                                      function.
      *
      *  @description    Runs the given function every time the <b>onRead</b>
      *                  event is triggered, passing it the received data as
      *                  an argument.
      */
     const onRead = function ( newFn ) {
-        registerCallback( newFn, "onRead" );
+        registerEventCallback( newFn, "onRead" );
     };
 
     /**
      *  @public
      *  @func       onRetry
-     *  @param      {Function}  newFn   The function to run when the
-     *                                  <b>onRetry</b> event is fired.
-     *  @throws     {CallbackNotAFunction} If <code>newFn</code> is not a function.
+     *  @param      {function}  newFn       The function to run when the
+     *                                      <b>onRetry</b> event is fired.
+     *  @throws     {CallbackNotAFunction}  If <code>newFn</code> is not a
+     *                                      function.
      *
      *  @description    Runs the given function every time the <b>onRetry</b>
      *                  event is triggered, passing it the error that caused the
      *                  retry, as well as a count of the number of retries.
      */
     const onRetry = function ( newFn ) {
-        registerCallback( newFn, "onRetry" );
+        registerEventCallback( newFn, "onRetry" );
     };
 
-    const registerCallback = ( newFn, eventName ) => {
+    const registerEventCallback = ( newFn, eventName ) => {
         if ( !isFunction( newFn ) )
             throw cbException( newFn, eventName );
 
@@ -241,13 +248,14 @@ const connManager = ( heartBeat = heartBeatFactory() ) => {
     /**
      *  @public
      *  @func       setConnectFn
-     *  @param      {Function}      newFn   The function to be used when
-     *                                      <code>connect</code> is called and
-     *                                      every time automatic reconnection
-     *                                      takes place.
-     *  @throws     {ConnectHandlerNotAFunction} If <code>newFn</code> is not a function.
+     *  @param      {function}      newFn         The function to be used when
+     *                                            <code>connect</code> is called
+     *                                            and every time automatic
+     *                                            reconnection takes place.
+     *  @throws     {ConnectHandlerNotAFunction}  If <code>newFn</code> is not a
+     *                                            function.
      *
-     *  @description    Used when you need to custom connect function because
+     *  @description    Used when you need a custom connect function because
      *                  the target has a specific handshake or protocol. The
      *                  function passed must return the socket used for the
      *                  connection.

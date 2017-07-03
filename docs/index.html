@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-connManager.html">connManager</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~connect">connect</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~disconnect">disconnect</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~isConnected">isConnected</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onClose">onClose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onOpen">onOpen</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onRead">onRead</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onRetry">onRetry</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~send">send</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~setConnectFn">setConnectFn</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-connManager.html">connManager</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~connect">connect</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~disconnect">disconnect</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~isConnected">isConnected</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onClose">onClose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onOpen">onOpen</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onRead">onRead</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onRetry">onRetry</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~send">send</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~setConnectFn">setConnectFn</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
 </nav>
 
 <div id="main">
@@ -48,11 +48,11 @@
 
 
     <section class="readme">
-        <article><h1>What</h1><p><code>tcp-ip-connMan</code> stands &quot;tcp-ip Connection Manager&quot;. As the name says, it takes
+        <article><h1>What</h1><p><code>tcp-ip-connman</code> stands &quot;tcp-ip Connection Manager&quot;. As the name says, it takes
 care of connections for you, with automatic reconnects, heartbeat and events,
-you don't need to worry if your connections are up or down, <code>tcp-ip-connMan</code>
+you don't need to worry if your connections are up or down, <code>tcp-ip-connman</code>
 will take care of that for you.</p>
-<p>With <code>tcp-ip-connMan</code> all you need to do is to connect, and forget all your
+<p>With <code>tcp-ip-connman</code> all you need to do is to connect, and forget all your
 problems!</p>
 <h1>Why</h1><p>TCP/IP connections are tricky, mainly becasuse of <a href="https://superuser.com/a/615971/222770">half-closed</a>
 and <a href="https://blog.stephencleary.com/2009/05/detection-of-half-open-dropped.html">half-open</a>
@@ -63,42 +63,42 @@ the same for half-open connections.</p>
 nothing happened.</p>
 <p>This library takes care of half-open connections, by implementing a heartbeat and
 by having a event rich API to let you know everything you need.</p>
-<p>If you don't want to use the events API, that's fine as well, as <code>tcp-ip-connMan</code>
+<p>If you don't want to use the events API, that's fine as well, as <code>tcp-ip-connman</code>
 manages timeouts and connection drops automatically reconnecting for you.</p>
-<h1>How</h1><p>Following are instructions on how to intsall and use <code>tcp-ip-connMan</code>. For more
+<h1>How</h1><p>Following are instructions on how to intsall and use <code>tcp-ip-connman</code>. For more
 information about the project you can check the GitHub page:</p>
 <ul>
-<li><a href="https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan">tcp-ip-connMan Github</a></li>
+<li><a href="https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan">tcp-ip-connman Github</a></li>
 </ul>
 <p>And for questions you can ask in the issues page:</p>
 <ul>
-<li><a href="https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan/issues">tcp-ip-connMan Issues</a></li>
+<li><a href="https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan/issues">tcp-ip-connman Issues</a></li>
 </ul>
 <p>Feel free to check the project's project page for additional information on the
 API as well.</p>
-<h2>Install</h2><pre class="prettyprint source"><code>npm install tcp-ip-connMan --save</code></pre><h2>Examples</h2><p>Creating a connection manager with a custom heartbeat and connect:</p>
-<pre class="prettyprint source"><code>const connManager = require(&quot;tcp-ip-connMan&quot;);
+<h2>Install</h2><pre class="prettyprint source"><code>npm install tcp-ip-connman --save</code></pre><h2>Examples</h2><p>Creating a connection manager with a custom heartbeat and connect:</p>
+<pre class="prettyprint source"><code>const connmanager = require(&quot;tcp-ip-connman&quot;);
 const heartBeat = heartBeatFactory();
 heartBeat.setPing(&quot;Marco&quot;);
 heartBeat.setPong(&quot;Polo&quot;);
 heartBeat.setBeatInterval(50);
 heartBeat.setBeatTimeout(150);
 
-const client = connManager(heartBeat);
+const client = connmanager(heartBeat);
 
 client.connect({host: &quot;localhost&quot;, port: 8080})
     .then(() => console.log(&quot;success!&quot;)
     .catch(console.log);</code></pre><p>Creating a connection manager with a default PING, PONG and heartbeat:</p>
-<pre class="prettyprint source"><code>const connManager = require(&quot;tcp-ip-connMan&quot;);
+<pre class="prettyprint source"><code>const connmanager = require(&quot;tcp-ip-connman&quot;);
 
 //Default PING is Buffer.from([0x01])
 //Default PONG is Buffer.from([0x02])
 //Default TIMEOUT and INTERVAL are from [heartbeatjs](https://www.npmjs.com/package/heartbeatjs)
-const client = connManager();
+const client = connmanager();
 
 client.connect({host: &quot;localhost&quot;, port: 8080})
     .then(() => console.log(&quot;success!&quot;)
-    .catch(console.log);</code></pre><p>Using a previously created connMan to define behaviors for the various
+    .catch(console.log);</code></pre><p>Using a previously created connman to define behaviors for the various
 events:</p>
 <pre class="prettyprint source"><code>client.onOpen(online => {
     console.log(`Connection established: ${online}`);
@@ -127,7 +127,7 @@ client.onRetry((error, num) => {
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Jun 20 2017 16:23:38 GMT+0200 (CEST) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Jul 03 2017 12:46:00 GMT+0200 (CEST) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

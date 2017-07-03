@@ -1,7 +1,10 @@
 const net = require("net");
 const heartBeatFactory = require("heartbeatjs");
 const isFunction = require("lodash.isfunction");
-const callbackNotAFunction = require("./errors.js").callbackNotAFunction;
+const errors = require("./errors.js");
+const cbNotAFunction = errors.callbackNotAFunction;
+const connectHandlerNotAFunction = errors.connectHandlerNotAFunction;
+
 
 /**
  *  @public
@@ -175,7 +178,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      *  @func       onClose
      *  @param      {Function}  newFn   The function to run when the
      *                                  <b>onClose</b> event is fired.
-     *  @throws     {TypeError} If <code>newFn</code> is not a function.
+     *  @throws     {CallbackNotAFunction} If <code>newFn</code> is not a function.
      *
      *  @description    Runs the given function every time the <b>onClose</b>
      *                  event is triggered, passing it the argument
@@ -183,7 +186,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const onClose = function(newFn) {
         if (!isFunction(newFn))
-            throw callbackNotAFunction(newFn, "onClose");
+            throw cbNotAFunction(newFn, "onClose");
         eventFns.onClose = newFn;
     };
 
@@ -192,7 +195,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      *  @func       onOpen
      *  @param      {Function}  newFn   The function to run when the
      *                                  <b>onOpen</b> event is fired.
-     *  @throws     {TypeError} If <code>newFn</code> is not a function.
+     *  @throws     {CallbackNotAFunction} If <code>newFn</code> is not a function.
      *
      *  @description    Runs the given function every time the <b>onOpen</b>
      *                  event is triggered, passing it the argument
@@ -200,7 +203,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const onOpen = function(newFn) {
         if (!isFunction(newFn))
-            throw callbackNotAFunction(newFn, "onOpen");
+            throw cbNotAFunction(newFn, "onOpen");
         eventFns.onOpen = newFn;
     };
 
@@ -209,7 +212,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      *  @func       onRead
      *  @param      {Function}  newFn   The function to run when the
      *                                  <b>onRead</b> event is fired.
-     *  @throws     {TypeError} If <code>newFn</code> is not a function.
+     *  @throws     {CallbackNotAFunction} If <code>newFn</code> is not a function.
      *
      *  @description    Runs the given function every time the <b>onRead</b>
      *                  event is triggered, passing it the received data as
@@ -217,7 +220,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const onRead = function(newFn) {
         if (!isFunction(newFn))
-            throw callbackNotAFunction(newFn, "onRead");
+            throw cbNotAFunction(newFn, "onRead");
         eventFns.onRead = newFn;
     };
 
@@ -226,7 +229,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      *  @func       onRetry
      *  @param      {Function}  newFn   The function to run when the
      *                                  <b>onRetry</b> event is fired.
-     *  @throws     {TypeError} If <code>newFn</code> is not a function.
+     *  @throws     {CallbackNotAFunction} If <code>newFn</code> is not a function.
      *
      *  @description    Runs the given function every time the <b>onRetry</b>
      *                  event is triggered, passing it the error that caused the
@@ -234,7 +237,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const onRetry = function(newFn) {
         if (!isFunction(newFn))
-            throw callbackNotAFunction(newFn, "onRetry");
+            throw cbNotAFunction(newFn, "onRetry");
         eventFns.onRetry = newFn;
     };
 
@@ -245,7 +248,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      *                                      <code>connect</code> is called and
      *                                      every time automatic reconnection
      *                                      takes place.
-     *  @throws     {TypeError} If <code>newFn</code> is not a function.
+     *  @throws     {ConnectHandlerNotAFunction} If <code>newFn</code> is not a function.
      *
      *  @description    Used when you need to custom connect function because
      *                  the target has a specific handshake or protocol. The
@@ -254,7 +257,7 @@ const connManager = (heartBeat = heartBeatFactory()) => {
      */
     const setConnectFn = function(newFn) {
         if (!isFunction(newFn))
-            throw new TypeError(`${newFn} must be a function.`);
+            throw connectHandlerNotAFunction(newFn);
         connection.connectFn = newFn;
     };
 

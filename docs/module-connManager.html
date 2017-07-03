@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-connManager.html">connManager</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~connect">connect</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~disconnect">disconnect</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~isConnected">isConnected</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onClose">onClose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onOpen">onOpen</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onRead">onRead</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onRetry">onRetry</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~send">send</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~setConnectFn">setConnectFn</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-connManager.html">connManager</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~connect">connect</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~disconnect">disconnect</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~isConnected">isConnected</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onClose">onClose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onOpen">onOpen</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onRead">onRead</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onRetry">onRetry</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~send">send</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~setConnectFn">setConnectFn</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
 </nav>
 
 <div id="main">
@@ -51,7 +51,7 @@
     <div class="container-overview">
     
         
-            <div class="description">Takes care of remote tcp-ip connections by attempting automatic 
+            <div class="description">Takes care of remote tcp-ip connections by attempting automatic
          reconnects and handling timeouts.</div>
         
 
@@ -104,7 +104,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line7">line 7</a>
+        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -171,21 +171,21 @@
 
 <div class="description">
     <p>
-                     Attempts to connect to the tcp-ip server provided 
+                     Attempts to connect to the tcp-ip server provided
                      with the given options.
                  </p>
                  <p>
                      It will not resolve until a connection is made. Once
-                     a connection is made it fires <code>onOpen</code>, 
-                     and every time it retries to establish a connection 
+                     a connection is made it fires <code>onOpen</code>,
+                     and every time it retries to establish a connection
                      it fires <code>onRetry()</code>.
                  </p>
                  <p>
-                     Once a connection is established, it starts the 
-                     heartbeat to periodically check the health of the 
-                     target. If the connection dies or times out, it 
-                     fires <code>onClose</code> and automatic 
-                     reconnection is attempted, called 
+                     Once a connection is established, it starts the
+                     heartbeat to periodically check the health of the
+                     target. If the connection dies or times out, it
+                     fires <code>onClose</code> and automatic
+                     reconnection is attempted, called
                      <code>onRetry</code> for every failed attempt.
                  </p>
 </div>
@@ -223,7 +223,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line42">line 42</a>
+        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line44">line 44</a>
     </li></ul></dd>
     
 
@@ -299,12 +299,12 @@
             <td class="description last">
                 An object with connect options. This
                                      is the object that will be passed to
-                                     <code>connectFn</code> to attempt 
-                                     connect. The default 
+                                     <code>connectFn</code> to attempt
+                                     connect. The default
                                      <code>connectFn</code> makes a socket
-                                     connection, so the connections 
-                                     object passed to the default should 
-                                     be the one used is 
+                                     connection, so the connections
+                                     object passed to the default should
+                                     be the one used is
                                      <code>net.createConnection()</code>.
                 
             </td>
@@ -333,7 +333,7 @@
 <dl>
     <dt>
         <div class="param-desc">
-        If there is no connection options. There must 
+        If there is no connection options. There must
                          always be a <code>connectOpts</code> parameter.
         </div>
     </dt>
@@ -434,7 +434,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line121">line 121</a>
+        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line123">line 123</a>
     </li></ul></dd>
     
 
@@ -488,7 +488,7 @@
 
 
 <div class="description">
-    Returns <code>true</code> if the connection is up, 
+    Returns <code>true</code> if the connection is up,
                  <code>false</code> otherwise. If a reconnection is taking
                  place, it will still return <code>false</code>.
 </div>
@@ -526,7 +526,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line135">line 135</a>
+        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line137">line 137</a>
     </li></ul></dd>
     
 
@@ -576,7 +576,7 @@
 
 
 <div class="param-desc">
-    <code>true</code> if the connection is up, 
+    <code>true</code> if the connection is up,
                          <code>false</code> otherwise.
 </div>
 
@@ -600,7 +600,7 @@
 
 <div class="description">
     Runs the given function every time the <b>onClose</b>
-                 event is triggered, passing it the argument 
+                 event is triggered, passing it the argument
                  <code>false</code>.
 </div>
 
@@ -637,7 +637,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line174">line 174</a>
+        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line176">line 176</a>
     </li></ul></dd>
     
 
@@ -698,7 +698,7 @@
             
 
             <td class="description last">
-                The function to run when the 
+                The function to run when the
                                  <b>onClose</b> event is fired.
                 
             </td>
@@ -738,7 +738,7 @@
             </dt>
             <dd>
                 
-<span class="param-type"><code>TypeError</code></span>
+<span class="param-type"><code><a href="global.html#CallbackNotAFunction">CallbackNotAFunction</a></code></span>
 
 
             </dd>
@@ -770,7 +770,7 @@
 
 <div class="description">
     Runs the given function every time the <b>onOpen</b>
-                 event is triggered, passing it the argument 
+                 event is triggered, passing it the argument
                  code>true</code>.
 </div>
 
@@ -807,7 +807,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line191">line 191</a>
+        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line193">line 193</a>
     </li></ul></dd>
     
 
@@ -868,7 +868,7 @@
             
 
             <td class="description last">
-                The function to run when the 
+                The function to run when the
                                  <b>onOpen</b> event is fired.
                 
             </td>
@@ -908,7 +908,7 @@
             </dt>
             <dd>
                 
-<span class="param-type"><code>TypeError</code></span>
+<span class="param-type"><code><a href="global.html#CallbackNotAFunction">CallbackNotAFunction</a></code></span>
 
 
             </dd>
@@ -940,7 +940,7 @@
 
 <div class="description">
     Runs the given function every time the <b>onRead</b>
-                 event is triggered, passing it the received data as 
+                 event is triggered, passing it the received data as
                  an argument.
 </div>
 
@@ -977,7 +977,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line208">line 208</a>
+        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line210">line 210</a>
     </li></ul></dd>
     
 
@@ -1038,7 +1038,7 @@
             
 
             <td class="description last">
-                The function to run when the 
+                The function to run when the
                                  <b>onRead</b> event is fired.
                 
             </td>
@@ -1078,7 +1078,7 @@
             </dt>
             <dd>
                 
-<span class="param-type"><code>TypeError</code></span>
+<span class="param-type"><code><a href="global.html#CallbackNotAFunction">CallbackNotAFunction</a></code></span>
 
 
             </dd>
@@ -1147,7 +1147,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line225">line 225</a>
+        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line227">line 227</a>
     </li></ul></dd>
     
 
@@ -1208,7 +1208,7 @@
             
 
             <td class="description last">
-                The function to run when the 
+                The function to run when the
                                  <b>onRetry</b> event is fired.
                 
             </td>
@@ -1248,7 +1248,7 @@
             </dt>
             <dd>
                 
-<span class="param-type"><code>TypeError</code></span>
+<span class="param-type"><code><a href="global.html#CallbackNotAFunction">CallbackNotAFunction</a></code></span>
 
 
             </dd>
@@ -1315,7 +1315,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line157">line 157</a>
+        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line159">line 159</a>
     </li></ul></dd>
     
 
@@ -1411,7 +1411,7 @@
 <dl>
     <dt>
         <div class="param-desc">
-        If the connection is down. You can check this 
+        If the connection is down. You can check this
                          via <code>isConnected</code>.
         </div>
     </dt>
@@ -1454,9 +1454,9 @@
 
 
 <div class="description">
-    Used when you need to custom connect function because 
-                 the target has a specific handshake or protocol. The 
-                 function passed must return the socket used for the 
+    Used when you need to custom connect function because
+                 the target has a specific handshake or protocol. The
+                 function passed must return the socket used for the
                  connection.
 </div>
 
@@ -1493,7 +1493,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line242">line 242</a>
+        <a href="connectionManager.js.html">connectionManager.js</a>, <a href="connectionManager.js.html#line244">line 244</a>
     </li></ul></dd>
     
 
@@ -1554,9 +1554,9 @@
             
 
             <td class="description last">
-                The function to be used when 
-                                     <code>connect</code> is called and 
-                                     every time automatic reconnection 
+                The function to be used when
+                                     <code>connect</code> is called and
+                                     every time automatic reconnection
                                      takes place.
                 
             </td>
@@ -1596,7 +1596,7 @@
             </dt>
             <dd>
                 
-<span class="param-type"><code>TypeError</code></span>
+<span class="param-type"><code><a href="global.html#ConnectHandlerNotAFunction">ConnectHandlerNotAFunction</a></code></span>
 
 
             </dd>
@@ -1632,7 +1632,7 @@
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Jun 20 2017 16:23:38 GMT+0200 (CEST) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Jul 03 2017 12:46:00 GMT+0200 (CEST) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

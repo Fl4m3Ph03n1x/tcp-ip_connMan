@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>errors.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-connManager.html">connManager</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~connect">connect</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~disconnect">disconnect</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~isConnected">isConnected</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onClose">onClose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onOpen">onOpen</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onRead">onRead</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~onRetry">onRetry</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~send">send</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-connManager.html#~setConnectFn">setConnectFn</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">errors.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ *  @typedef    {TypeError} CallbackNotAFunction
+ *  @property   {string}    name=CallbackNotAFunction   Name of the error.
+ *  @property   {string}    message                     Message of the error.
+ *
+ *  @description    Error throw when one passes a &lt;code>newFn&lt;/code> parameter
+ *                  that is not a function to any of the following events:
+ *                  &lt;ul>
+ *                      &lt;li>&lt;code>onOpen&lt;/code>&lt;/li>
+ *                      &lt;li>&lt;code>onClose&lt;/code>&lt;/li>
+ *                      &lt;li>&lt;code>onRead&lt;/code>&lt;/li>
+ *                      &lt;li>&lt;code>onRetry&lt;/code>&lt;/li>
+ *                  &lt;/ul>
+ * @example
+ *
+ * const watcher = require("obj-watcher");
+ *
+ * watcher.watch("status", { online: true });
+ * //Throws, second parameter should be of type "function".
+ * watcher.onChange("status", "I am not a function!");
+ */
+
+ /**
+  *  @typedef    {TypeError} ConnectHandlerNotAFunction
+  *  @property   {string}    name=ConnectHandlerNotAFunction    Name of the error.
+  *  @property   {string}    message                            Message of the error.
+  *
+  *  @description     Error throw when one tries to &lt;code>setConnectFn&lt;/code>
+  *                   with something that is not a function.
+  *  @example
+  *
+  * const watcher = require("obj-watcher");
+  *
+  * watcher.watch("status", { online: true });
+  * //Throws, second parameter should be of type "function".
+  * watcher.onChange("status", "I am not a function!");
+  */
+
+/**
+ * @private
+ * @func    errorFactory
+ * @param   {string}        name    The name of the error to be created.
+ * @param   {string}        message The message the error will contain.
+ * @param   {Error}         [errorType = new Error()] The error type that will
+ *                                                    be created and returned.
+ * @returns {Error}
+ *
+ * @description Creates an error and returns it.
+ */
+const errorFactory = ( name, message, errorType = new Error() ) => {
+    const error = errorType;
+    error.message = message + " See https://fl4m3ph03n1x.github.io/obj-watcher/global.html for more info on errors.";
+    error.name = name;
+    return error;
+};
+
+/**
+ *  @private
+ *  @func       callbackNotAFunction
+ *  @param      {function}    callbackFn  The object causing the error.
+ *  @param      {string}      eventName   Name of the event where the error is
+ *                                        occuring.
+ *  @returns    {TypeError}
+ *
+ *  @description    Creates a "CallbackNotAFunction" TypeError for the event
+ *                  that received the wrong parameter and returns it. Used when
+ *                  a user passes an object that is expected to be a function
+ *                  but isn't.
+ */
+const callbackNotAFunction = ( callbackFn, eventName ) =>
+    errorFactory( "CallbackNotAFunction", `Provided callback ${callbackFn} for event ${eventName} is not a function.`, new TypeError() );
+
+/**
+ *  @private
+ *  @func       connectHandlerNotAFunction
+ *  @param      {function}  handler The object causing the error.
+ *  @returns    {TypeError}
+ *
+ *  @description    Creates a "ConnectHandlerNotAFunction" TypeError that is
+ *                  returned when one tries to setConnectFn with something that
+ *                  is not a function.
+ */
+const connectHandlerNotAFunction = ( handler ) =>
+    errorFactory( "ConnectHandlerNotAFunction", `Provided connect handler ${handler} for is not a function.`, new TypeError() );
+
+
+module.exports.callbackNotAFunction = callbackNotAFunction;
+module.exports.connectHandlerNotAFunction = connectHandlerNotAFunction;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Jul 03 2017 12:46:00 GMT+0200 (CEST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

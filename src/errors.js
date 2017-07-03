@@ -13,9 +13,9 @@
  *                  </ul>
  *  @example
  *
- *  const connmanager = require("tcp-ip-connman");
- *  const client = connmanager();
- *  client.onRead("I am not a function!"); //error
+ * const connmanager = require("tcp-ip-connman");
+ * const client = connmanager();
+ * client.onRead("I am not a function!"); //error
  */
 
 /**

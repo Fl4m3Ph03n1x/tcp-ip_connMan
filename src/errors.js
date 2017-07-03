@@ -11,8 +11,7 @@
  *                      <li><a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onRead">onRead</a></li>
  *                      <li><a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~onRetry">onRetry</a></li>
  *                  </ul>
- *  @example
- *
+ * @example
  * const connmanager = require("tcp-ip-connman");
  * const client = connmanager();
  * client.onRead("I am not a function!"); //error
@@ -25,11 +24,10 @@
  *
  *  @description     Error throw when one tries use <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~setConnectFn">setConnectFn</a>
  *                   with a parameter that is not a function.
- *  @example
- *
- *  const connmanager = require("tcp-ip-connman");
- *  const client = connmanager();
- *  client.setConnectFn("I am not a function!"); //error
+ * @example
+ * const connmanager = require("tcp-ip-connman");
+ * const client = connmanager();
+ * client.setConnectFn("I am not a function!"); //error
  */
 
 /**
@@ -40,14 +38,13 @@
  *  @description     Error throw when one tries to use <code>send</code>
  *                   and the socket used in the connection is destroyed,
  *                   meaning that there is no valid connection up.
- *  @example
+ * @example
+ * const connmanager = require("tcp-ip-connman");
+ * const client = connmanager();
+ * console.log(isConnected()); //false!
  *
- *  const connmanager = require("tcp-ip-connman");
- *  const client = connmanager();
- *  console.log(isConnected()); //false!
- *
- *  //error, there is no connection or the connection is down
- *  client.send("I didn't connect b4!");
+ * //error, there is no connection or the connection is down
+ * client.send("I didn't connect b4!");
  */
 
  /**
@@ -57,11 +54,10 @@
   *
   *  @description     Error throw when one tries to use <a href="https://fl4m3ph03n1x.github.io/tcp-ip_connMan/module-connManager.html#~connect">connect</a>
   *                   without passing an options parameter.
-  *  @example
-  *
-  *  const connmanager = require("tcp-ip-connman");
-  *  const client = connmanager();
-  *  client.connect(); //error, a parameter is necessary
+  * @example
+  * const connmanager = require("tcp-ip-connman");
+  * const client = connmanager();
+  * client.connect(); //error, a parameter is necessary
   */
 
 /**

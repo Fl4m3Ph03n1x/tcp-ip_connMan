@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "NODE_ENV=test nyc mocha --reporter spec test/**/*_spec.js || true",
-    "test:functional": "NODE_ENV=test nyc mocha --reporter spec test/functional/*_spec.js || true",
+    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && ./node_modules/codecov/bin/codecov -t bf95a53d-c356-42b9-b6a2-0b0696f7450b",
     "doc": "./node_modules/.bin/jsdoc -c ./jsdocConf.json ./src/**.js -d ./docs -t ./node_modules/minami -R ./docs/DOCS_README.md"
   },
   "repository": {
@@ -34,6 +34,7 @@
   "homepage": "https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan#readme",
   "devDependencies": {
     "chai": "^4.0.1",
+    "codecov": "^2.2.0",
     "jsdoc": "^3.4.3",
     "jsdoc-strip-async-await": "^0.1.0",
     "minami": "^1.2.3",

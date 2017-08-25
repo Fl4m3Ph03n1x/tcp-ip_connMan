@@ -1,3 +1,11 @@
+<div align="center">
+    <a href="https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan">
+        <img src="./logos/logo_no_wm.png">
+    </a>
+</div>
+
+<div align="center">
+
 [![NPM](https://nodei.co/npm/tcp-ip-connman.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/tcp-ip-connman/)
 
 [![Build Status](https://travis-ci.org/Fl4m3Ph03n1x/tcp-ip_connMan.svg?branch=master)](https://travis-ci.org/Fl4m3Ph03n1x/tcp-ip_connMan)
@@ -6,6 +14,8 @@
 [![Code Climate](https://codeclimate.com/github/Fl4m3Ph03n1x/tcp-ip_connMan/badges/gpa.svg)](https://codeclimate.com/github/Fl4m3Ph03n1x/tcp-ip_connMan)
 [![Inline docs](http://inch-ci.org/github/Fl4m3Ph03n1x/tcp-ip_connMan.svg?branch=master)](http://inch-ci.org/github/Fl4m3Ph03n1x/tcp-ip_connMan)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+
+</div>
 
 #   What
 

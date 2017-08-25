@@ -47,7 +47,7 @@
  * client.send("I didn't connect b4!");
  */
 
- /**
+/**
   *  @typedef    {Error}    OptionsNotProvided
   *  @property   {string}   name=OptionsNotProvided Name of the error.
   *  @property   {string}   message                 Message of the error.

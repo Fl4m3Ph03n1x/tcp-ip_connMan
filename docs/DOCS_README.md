@@ -18,8 +18,9 @@
 [![codecov](https://codecov.io/gh/Fl4m3Ph03n1x/tcp-ip_connMan/branch/master/graph/badge.svg)](https://codecov.io/gh/Fl4m3Ph03n1x/tcp-ip_connMan)
 [![Dependency Status](https://www.versioneye.com/user/projects/595a3773368b08004129ff04/badge.svg)](https://www.versioneye.com/user/projects/595a3773368b08004129ff04)
 [![Code Climate](https://codeclimate.com/github/Fl4m3Ph03n1x/tcp-ip_connMan/badges/gpa.svg)](https://codeclimate.com/github/Fl4m3Ph03n1x/tcp-ip_connMan)
+[![Known Vulnerabilities](https://snyk.io/test/github/fl4m3ph03n1x/tcp-ip_connman/badge.svg)](https://snyk.io/test/github/fl4m3ph03n1x/tcp-ip_connman)
 [![Inline docs](http://inch-ci.org/github/Fl4m3Ph03n1x/tcp-ip_connMan.svg?branch=master)](http://inch-ci.org/github/Fl4m3Ph03n1x/tcp-ip_connMan)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan/issues)
 
 </div>
 

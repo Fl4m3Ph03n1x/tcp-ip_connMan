@@ -1,6 +1,6 @@
 {
   "name": "tcp-ip-connman",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Connection manager for tcp/ip connections",
   "main": "./src/connectionManager.js",
   "directories": {
@@ -34,17 +34,17 @@
   "homepage": "https://github.com/Fl4m3Ph03n1x/tcp-ip_connMan#readme",
   "devDependencies": {
     "chai": "^4.1.2",
-    "codecov": "^2.3.0",
-    "eslint": "^4.8.0",
+    "codecov": "^3.0.2",
+    "eslint": "^4.19.1",
     "jsdoc": "^3.5.5",
     "jsdoc-strip-async-await": "^0.1.0",
     "minami": "^1.2.3",
-    "mocha": "^4.0.1",
-    "nyc": "^11.2.1",
-    "sinon": "^4.0.1"
+    "mocha": "^5.2.0",
+    "nyc": "^11.8.0",
+    "sinon": "^5.0.7"
   },
   "dependencies": {
-    "heartbeatjs": "^1.0.5",
-    "lodash.isfunction": "^3.0.8"
+    "heartbeatjs": "^1.0.8",
+    "lodash.isfunction": "^3.0.9"
   }
 }

@@ -16,7 +16,7 @@
 
 [![Build Status](https://travis-ci.org/Fl4m3Ph03n1x/tcp-ip_connMan.svg?branch=master)](https://travis-ci.org/Fl4m3Ph03n1x/tcp-ip_connMan)
 [![codecov](https://codecov.io/gh/Fl4m3Ph03n1x/tcp-ip_connMan/branch/master/graph/badge.svg)](https://codecov.io/gh/Fl4m3Ph03n1x/tcp-ip_connMan)
-[![Dependency Status](https://www.versioneye.com/user/projects/595a3773368b08004129ff04/badge.svg)](https://www.versioneye.com/user/projects/595a3773368b08004129ff04)
+[![Dependency Status](https://david-dm.org/Fl4m3Ph03n1x/tcp-ip_connman.svg)](https://david-dm.org/Fl4m3Ph03n1x/tcp-ip_connman)
 [![Code Climate](https://codeclimate.com/github/Fl4m3Ph03n1x/tcp-ip_connMan/badges/gpa.svg)](https://codeclimate.com/github/Fl4m3Ph03n1x/tcp-ip_connMan)
 [![Known Vulnerabilities](https://snyk.io/test/github/fl4m3ph03n1x/tcp-ip_connman/badge.svg)](https://snyk.io/test/github/fl4m3ph03n1x/tcp-ip_connman)
 [![Inline docs](http://inch-ci.org/github/Fl4m3Ph03n1x/tcp-ip_connMan.svg?branch=master)](http://inch-ci.org/github/Fl4m3Ph03n1x/tcp-ip_connMan)

@@ -73,7 +73,7 @@
  */
 const errorFactory = ( name, message, errorType = new Error() ) => {
     const error = errorType;
-    error.message = message + ` See https://fl4m3ph03n1x.github.io/tcp-ip_connMan/global.html#${name} for more info on errors.`;
+    error.message = `${message} See https://fl4m3ph03n1x.github.io/tcp-ip_connMan/global.html#${name} for more info on errors.`;
     error.name = name;
     return error;
 };
@@ -83,7 +83,7 @@ const errorFactory = ( name, message, errorType = new Error() ) => {
  *  @func       callbackNotAFunction
  *  @param      {function}    callbackFn  The object causing the error.
  *  @param      {string}      eventName   Name of the event where the error is
- *                                        occuring.
+ *                                        occurring.
  *  @returns    {TypeError}
  *
  *  @description    Creates a "CallbackNotAFunction" TypeError for the event

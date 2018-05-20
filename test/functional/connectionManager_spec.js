@@ -24,26 +24,18 @@ describe("connectionManager", () => {
     const server = dummyServerFactory(config);
 
 
-    beforeEach("start server", done => {
-        server.start()
-            .then(done)
-            .catch(done);
+    beforeEach("start server", async() => {
+        await server.start();
     });
 
-    afterEach("stop server, disconnect client", done => {
+    afterEach("stop server, disconnect client", async() => {
         client.disconnect();
-        server.stop()
-            .then(done)
-            .catch(done);
+        await server.stop();
     });
 
-    it("should connect to the server", done => {
-        client.connect(config)
-            .then(() => {
-                expect(server.onConnSpy.called).to.be.true;
-                done();
-            })
-            .catch(err => done(err));
+    it("should connect to the server", async() => {
+        await client.connect(config);
+        expect(server.onConnSpy.called).to.be.true;
     });
 
     it("should throw error if no options argument is passed to connect", done => {
@@ -52,14 +44,10 @@ describe("connectionManager", () => {
             .catch(() => done());
     });
 
-    it("should stop pinging if it is disconnected from the server", done => {
-        client.connect(config)
-            .then(client.disconnect)
-            .then(() => {
-                expect(heartBeat.isBeating()).to.be.false;
-                done();
-            })
-            .catch(done);
+    it("should stop pinging if it is disconnected from the server", async() => {
+        await client.connect(config);
+        client.disconnect();
+        expect(heartBeat.isBeating()).to.be.false;
     });
 
     it("should try to reconnect if the server is offline upon startup", done => {
@@ -239,7 +227,7 @@ describe("connectionManager", () => {
             .catch(done);
     });
 
-    it("should disconnect if it timesout", done => {
+    it("should disconnect if it times out", done => {
         const closeSpy = sinon.spy();
         client.onClose(closeSpy);
 
@@ -271,7 +259,7 @@ describe("connectionManager", () => {
         }, 100);
     });
 
-    it("should attempt to reconnect when it timesout", done => {
+    it("should attempt to reconnect when it times out", done => {
 
         heartBeat.setBeatTimeout(1);
         client.connect(config)
